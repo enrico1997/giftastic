@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>GifTastic</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+      <div class="jumbotron">
+        <h1>GifTastic</h1>
+        <p>Show Images from Harry's World and bring them to life</p>
+      </div>
+
+    <!-- A bunch of buttons related to Harry Potter  -->
+    <div id="buttons-view"></div>
+
+    <form id="harry-form">
+      <div class="form-group" id="harry-form">
+        <label class="control-label" for="harry-input"><h3>Enter Harry Potter-related topics then click "Cast Spell" to add</h3></label>
+        <input type="text" class="form-control" id="harry-input">
+      </div>
+
+      <!-- Button triggers new object to be added -->
+      <input id="add-button" class="btn btn-danger btn-primary btn-lg" type="submit" value="Cast Spell">
+    </form>
+
+    <!-- Giphy response (image and ratings) display here -->
+      <div class="row" id="giphy-view">
+      </div>
+
+  </div>
+
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+  <!-- Footer -->
+  <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright &copy; 2017 Enrico Bernardo</p>
+    </div>
+  </div>
+  </footer>
+</body>
+
+
+</html>
