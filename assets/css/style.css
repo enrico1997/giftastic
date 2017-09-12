@@ -6,6 +6,10 @@ h3 {
 
 }
 
+.giphy {
+  display: inline-block;
+}
+
 button,
 div,
 form,

@@ -1,11 +1,11 @@
 // Initial array of Harry Potter objects
-var harryObjects = ["Harry Potter", "Chocolate Frog", "Azkaban", "Hermione Granger", "Firebolt", "Owl", "Draco Malfoy", "Ginny Weasley", "Slytherin"];
+var harryObjects = ["Harry Potter", "Chocolate Frog", "Azkaban", "Hermione Granger", "Draco Malfoy", "Ginny Weasley", "Slytherin", "Platform 9 3/4"];
 
 // displayGiphyInfo function re-renders the HTML to display the appropriate content
 function displayGiphyInfo() {
   var giphy = $(this).attr("data-name");
   // queryURL for Giphy API
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=914b704852054f13af2d496c8de8b17e&q=" + giphy + "&limit=10&offset=0&rating=PG-13&lang=en"
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=914b704852054f13af2d496c8de8b17e&q=" + giphy + "&limit=10&offset=0&rating=PG-13&lang=en";
   console.log("queryURL: " + queryURL);
 
   // Creating an AJAX call for the specific button being clicked
@@ -29,24 +29,27 @@ function displayGiphyInfo() {
       giphyDiv.append(pOne);
 
       // Retrieving the still and animated URLs for the image
-      var stillImgURL = response.data[i].images.original_still.url;
-      var origImgURL = response.data[i].images.original.url;
+      var stillImgURL = response.data[i].images.fixed_width_still.url;
+      var animatedImgURL = response.data[i].images.fixed_width.url;
 
       // Creating an element to hold the image
-      var stillImage = $("<img>").attr("src", stillImgURL);
-      var origImage = $("<img>").attr("src", origImgURL);
+      var stillImage = $("<img>").attr("src", stillImgURL).attr("id", "stillPic");
+      var animatedImage = $("<img>").attr("src", animatedImgURL).attr("id", "movePic");
 
-      var isStill = true;
-
-      if (isStill = true) {
-        // Appending the images
-        giphyDiv.append(stillImage);
-        isStill = false;
-      }
-      else {
-      giphyDiv.append(origImage);
-      }
+      giphyDiv.append(stillImage);
       
+      // Appending the images
+      $(this).on("click", "#stillPic", function(){
+       if($(this).attr('id') === "stillPic")
+       {
+         giphyDiv.append(animatedImage);
+       }else{
+         giphyDiv.append(stillImage);
+       }}
+      );
+
+      //$(document).on("click", "#stillPic", stillPicFunction());
+ 
       // Putting images of the clicked item
       $("#giphy-view").prepend(giphyDiv);
     };
