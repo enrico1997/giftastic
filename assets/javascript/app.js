@@ -1,7 +1,7 @@
 // Initial array of Harry Potter objects
-var harryObjects = ["Harry Potter", "Chocolate Frog", "Azkaban", "Hermione Granger", "Draco Malfoy", "Ginny Weasley", "Slytherin", "Platform 9 3/4"];
+var harryObjects = ["Potter", "Hogwarts", "Azkaban", "Hermione Granger", "Draco Malfoy", "Ginny Weasley", "Slytherin", "Platform 9 3/4"];
 
-// displayGiphyInfo function re-renders the HTML to display the appropriate content
+// Function re-renders the HTML to display the appropriate content
 function displayGiphyInfo() {
   var giphy = $(this).attr("data-name");
   // queryURL for Giphy API
@@ -33,23 +33,17 @@ function displayGiphyInfo() {
       var animatedImgURL = response.data[i].images.fixed_width.url;
 
       // Creating an element to hold the image
-      var stillImage = $("<img>").attr("src", stillImgURL).attr("id", "stillPic");
-      var animatedImage = $("<img>").attr("src", animatedImgURL).attr("id", "movePic");
+      var a = $("<img>")
+        .attr("src", stillImgURL);
+      // Adding a data-attributes
+      a.attr("data-still", stillImgURL);
+      a.attr("data-state", "still");
+      a.attr("data-animate", animatedImgURL);
+      // Adding a class of gif to image
+      a.addClass ("gif");
 
-      giphyDiv.append(stillImage);
+      giphyDiv.append(a);
       
-      // Appending the images
-      $(this).on("click", "#stillPic", function(){
-       if($(this).attr('id') === "stillPic")
-       {
-         giphyDiv.append(animatedImage);
-       }else{
-         giphyDiv.append(stillImage);
-       }}
-      );
-
-      //$(document).on("click", "#stillPic", stillPicFunction());
- 
       // Putting images of the clicked item
       $("#giphy-view").prepend(giphyDiv);
     };
@@ -69,9 +63,8 @@ function renderButtons() {
     // Then dynamicaly generating buttons for each giphy in the array
     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
     var a = $("<button>")
-      .addClass ('btn btn-primary')
-    ;
-    // Adding a class of giphy to our button
+      .addClass ("btn btn-primary");
+    // Adding a class of giphy to buttons
     a.addClass("giphy");
     // Adding a data-attribute
     a.attr("data-name", harryObjects[i]);
@@ -82,22 +75,33 @@ function renderButtons() {
   }
 }
 
-// This function handles events where a button is clicked
+// Function handles events when button is clicked
 $("#add-button").on("click", function(event) {
   event.preventDefault();
-
   // This line grabs the input from the textbox
   var giphy = $("#harry-input").val().trim();
-
   // Adding entry in textbox to the array
   harryObjects.push(giphy);
-
   // Calling renderButtons which handles the processing of the array
   renderButtons();
+    // Allows the pressing of "Enter" key to add new button
+  return false;
+});
+
+// Function for animating gifs
+$(document).on("click", ".gif", function() {
+  var state = $(this).attr("data-state");
+    if ( state == "still"){
+                $(this).attr("src", $(this).data("animate"));
+                $(this).attr("data-state", "animate");
+            } else {
+                $(this).attr("src", $(this).data("still"));
+                $(this).attr("data-state", "still");
+              };
 });
 
 // Adding a click event listener to all elements with a class of "giphy"
-$(document).on("click", ".giphy", displayGiphyInfo);
+$(document).on("click", ".btn-primary", displayGiphyInfo);
 
 // Calling the renderButtons function to display the initial buttons
 renderButtons();
