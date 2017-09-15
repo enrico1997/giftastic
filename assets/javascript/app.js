@@ -29,8 +29,8 @@ function displayGiphyInfo() {
       giphyDiv.append(pOne);
 
       // Retrieving the still and animated URLs for the image
-      var stillImgURL = response.data[i].images.fixed_width_downsampled.url;
-      var animatedImgURL = response.data[i].images.fixed_width_downsampled.url;
+      var stillImgURL = response.data[i].images.fixed_width_still.url;
+      var animatedImgURL = response.data[i].images.fixed_width.url;
 
       // Creating an element to hold the image
       var a = $("<img>")
