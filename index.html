@@ -14,25 +14,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-  <div class="container">
-      <div class="jumbotron">
-        <h1 class="animated zoomIn">GifTastic</h1>
-        <p>Show Images from Harry's World and bring them to life</p>
-      
-        <form id="harry-form">
-            <div class="form-group" id="harry-form">
-              <label class="control-label" for="harry-input"><h3><span class="glyphicon glyphicon-flash"> Click any button below to show images. Click images to bring them to life. Cast a spell by adding more Harry Potter themed buttons</span></h3></label>
-            </div>
+  <div class="jumbotron">
+    <h1 class="animated zoomIn">GifTastic</h1>
+    <p>Show Images from Harry's World and bring them to life</p>
+    
+    <form id="harry-form">
+        <div class="form-group" id="harry-form">
+          <label class="control-label" for="harry-input"><span class="glyphicon glyphicon-flash"> Add more Harry Potter themed buttons by casting a spell</span></label>
+        </div>
 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Spell..." id="harry-input">
-              <!-- Button triggers new object to be added -->
-              <span class="input-group-btn">
-                <button id="add-button" class="btn btn-default" type="button">Aparecium!</button>
-              </span>
-            </div><!-- /input-group -->
-      </form>
-    </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Spell..." id="harry-input">
+          <!-- Button triggers new object to be added -->
+          <span class="input-group-btn">
+            <button id="add-button" class="btn btn-default" type="button">Aparecium!</button>
+          </span>
+        </div><!-- /input-group -->
+    </form>
+</div>
 
     <!-- A bunch of buttons related to Harry Potter  -->
     <div id="buttons-view"></div>
@@ -40,8 +39,6 @@
     <!-- Giphy response (image and ratings) display here -->
       <div id="giphy-view">
       </div>
-
-  </div>
 
   <script type="text/javascript" src="assets/javascript/app.js"></script>
 

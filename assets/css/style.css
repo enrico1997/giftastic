@@ -28,7 +28,6 @@ h1, .correctText {
   padding-bottom: 20px;
   font-size: 40px;
   line-height: 49px;
-  float=right;
   border-bottom: 3px solid #ddd;
 }
 
@@ -40,10 +39,6 @@ h2 {
 	background: url("../images/hogwarts.jpg");
   background-size: 100% 100%;
 	padding: 20px;
-}
-
-#giphy-view {
-  padding-left: 20px;
 }
 
 footer {
