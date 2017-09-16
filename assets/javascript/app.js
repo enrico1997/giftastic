@@ -84,8 +84,6 @@ $("#add-button").on("click", function(event) {
   harryObjects.push(giphy);
   // Calling renderButtons which handles the processing of the array
   renderButtons();
-    // Allows the pressing of "Enter" key to add new button
-  return false;
 });
 
 // Function for animating gifs
